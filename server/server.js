@@ -22,7 +22,7 @@ socket.emit('newMessage',generateMessage('Admin','Welcometo hcat app'));
 
 socket.broadcast.emit('newMessage',generateMessage('Admin','new user joined'));
 
-socket.on('createMessage',(Message)=>{
+socket.on('createMessage',(Message,callback)=>{
   console.log('createMessage',Message);
   io.emit('newMessage',generateMessage(Message.from,Message.text));
   /*socket.broadcast.emit('newMessage',{
@@ -30,6 +30,7 @@ socket.on('createMessage',(Message)=>{
     text:Message.text,
     createdAt:new Date().getTime()
   });*/
+  callback();
 });
 
 socket.on('createLocationMessage',(coords)=>{
