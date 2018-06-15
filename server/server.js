@@ -18,14 +18,30 @@ console.log("New connection");
   text:'Whats up',
   createAtL:123
 });*/
+socket.emit('newMessage',{
+  from:'Admin',
+  text:'Welcometo hcat app',
+  createdAt:new Date().getTime()
+});
+
+socket.broadcast.emit('newMessage',{
+  from:'Admin',
+  text:'new user joined',
+  createdAt:new Date().getTime()
+});
 
 socket.on('createMessage',(Message)=>{
   console.log('createMessage',Message);
-  io.emit('newMessage',{
+  /*io.emit('newMessage',{
     from:Message.from,
     text:Message.text,
     createdAt:new Date().getTime()
-  });
+  });*/
+  /*socket.broadcast.emit('newMessage',{
+    from:Message.from,
+    text:Message.text,
+    createdAt:new Date().getTime()
+  });*/
 });
 
 socket.on('disconnect',()=>{
