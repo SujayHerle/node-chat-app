@@ -18,7 +18,7 @@ console.log("New connection");
   text:'Whats up',
   createAtL:123
 });*/
-socket.emit('newMessage',generateMessage('Admin','Welcometo hcat app'));
+socket.emit('newMessage',generateMessage('Admin','Welcome to chat app'));
 
 socket.broadcast.emit('newMessage',generateMessage('Admin','new user joined'));
 
